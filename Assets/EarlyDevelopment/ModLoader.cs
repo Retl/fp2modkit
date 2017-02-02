@@ -2,10 +2,12 @@
 using System.IO;
 using System.Collections;
 
-public class ModLoader : MonoBehaviour {
+public class ModLoader : MonoBehaviour
+{
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start()
+    {
         string cd = Directory.GetCurrentDirectory();
         string modDirectory = cd + "\\Mods\\";
         string[] modSubDirectories;
@@ -16,79 +18,105 @@ public class ModLoader : MonoBehaviour {
         //Debug.Log("*.png Contents:  " + System.String.Join(", ", Directory.GetFiles(cd, "*.png")));
 
         if (!Directory.Exists(modDirectory)) { Directory.CreateDirectory(modDirectory); }
-        else {
+        else
+        {
             Debug.Log("Mod Directory:  " + modDirectory);
             Debug.Log("Mod Folders: " + System.String.Join(", ", Directory.GetDirectories(modDirectory)));
 
             modSubDirectories = Directory.GetDirectories(modDirectory);
 
-            foreach (string currentModDir in modSubDirectories) {
+            foreach (string currentModDir in modSubDirectories)
+            {
                 Debug.Log("Checking for assets in:  " + currentModDir);
                 Debug.Log("Contents:  " + System.String.Join(", ", Directory.GetFiles(currentModDir)));
                 Debug.Log("*.png Contents:  " + System.String.Join(", ", Directory.GetFiles(currentModDir, "*.png")));
-                if (File.Exists(currentModDir + "\\thumb.png")) {
+                if (File.Exists(currentModDir + "\\thumb.png"))
+                {
                     // Load the thumbnail and do stuff with it.
                     Debug.Log("Found a thumbnail!");
                 }
-                if (File.Exists(currentModDir + "\\mod") && false)
+                //if (File.Exists(currentModDir + "\\mod") && false)
+                //{
+                //    Debug.Log("Mod file appears to exist.");
+                //    LoadAssetBundleFromPath(currentModDir + "\\mod");
+                //}
+                string[] assetBundleFileList = Directory.GetFiles(currentModDir, "*.unity3d");
+                foreach (string currentAssetBundleFile in assetBundleFileList)
                 {
-                    Debug.Log("Mod file appears to exist.");
-                    LoadAssetBundleFromPath(currentModDir + "\\mod");
-                }
-                if (File.Exists(currentModDir + "\\AssetBundles"))
-                {
-                    Debug.Log("AssetBundles file appears to exist.");
-                    LoadAssetBundleFromPath(currentModDir + "\\AssetBundles");
+                    Debug.Log("AssetBundles appear to exist.");
+                    LoadAssetBundleFromPath(currentAssetBundleFile);
                 }
             }
         }
 
         if (!Directory.Exists(modDirectory)) { Directory.CreateDirectory(modDirectory); }
     }
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
 
-    void LoadAssetBundleFromPath(string path) {
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
+
+    void LoadAssetBundleFromPath(string path)
+    {
         Debug.Log("Loading mod at: " + path);
         AssetBundle bun = AssetBundle.LoadFromFile(path);
+        //bun.laod
 
+        // If we want to actually use these scripts in the other objects, we'll want to finish adding it to the assembly first.
         TextAsset[] tas = bun.LoadAllAssets<TextAsset>();
         System.Collections.Generic.List<string> tasList = new System.Collections.Generic.List<string>();
         foreach (TextAsset ta in tas) { tasList.Add(ta.name); }
-
         Debug.Log("TextAssets loaded: " + string.Join(", ", tasList.ToArray()));
+        TextAsset txt = null;
 
-        // Load the TextAsset object
-        TextAsset txt = bun.LoadAsset<TextAsset>("ModAssembly.dll.bytes");
-        Debug.Log("txt.name: " + txt.name);
-        Debug.Log(txt ? "Found ModAssembly. **" + txt.name  : "NOPE!");
-        //txt = bun.LoadAsset<TextAsset>("ModAssembly");
-        //Debug.Log(txt ? "Found ModAssembly. Applying to ModMain object." : "NOPE!");
-
-        // Load the assembly and get a type (class) from it
-        if (txt)
+        if (tasList.Count > 0)
         {
-            Debug.Log("Found ModAssembly. Applying to ModMain object.");
-            var assembly = System.Reflection.Assembly.Load(txt.bytes);
-            var type = assembly.GetType("ModMainBehavior");
-            GameObject go = Instantiate(bun.LoadAsset<GameObject>("ModMain"));
-            go.AddComponent(type);
-        }
-        else {
-            Debug.Log("Did not find Assembly file.");
-            Instantiate(bun.LoadAsset<GameObject>("ModMain"));
-        }
-        
-        
-        
+            // Load the TextAsset object
+            foreach (TextAsset ta in tas)
+            {
+                txt = ta;
+                Debug.Log("taName: " + txt.name);
+                if (txt.name.Contains(".dll"))
+                {
+                    Debug.Log("txt.name: " + txt.name);
+                    Debug.Log(txt ? "Found ModAssembly. **" + txt.name : "NOPE!");
+                    //txt = bun.LoadAsset<TextAsset>("ModAssembly");
+                    //Debug.Log(txt ? "Found ModAssembly. Applying to ModMain object." : "NOPE!");
 
-        GameObject[] gos = bun.LoadAllAssets<GameObject>();
+                    // Load the assembly and get a type (class) from it
+                    if (txt)
+                    {
+                        //Debug.Log("Found ModAssembly. Applying to ModMain object.");
+                        Debug.Log("Found ModAssembly, Loading into Current Assembly.");
+                        var assembly = System.Reflection.Assembly.Load(txt.bytes);
+                        //var type = assembly.GetType("ModMainBehavior");
+                        //GameObject go = Instantiate(bun.LoadAsset<GameObject>("ModMain"));
+                        //go.AddComponent(type);
+                    }
+                }
+            }
+        }
+
+        UnityEngine.Object[] objs = bun.LoadAllAssets<UnityEngine.Object>();
+        System.Collections.Generic.List<string> objsList = new System.Collections.Generic.List<string>();
+        foreach (UnityEngine.Object obj in objs) { objsList.Add(obj.name); }
+        Debug.Log("ALL Objects loaded: " + string.Join(", ", objsList.ToArray()));
+
+        UnityEngine.GameObject[] gos = bun.LoadAllAssets<UnityEngine.GameObject>();
         System.Collections.Generic.List<string> gosList = new System.Collections.Generic.List<string>();
-        foreach (GameObject g in gos) { gosList.Add(g.name); }
-        
-        Debug.Log("Assets loaded: " + string.Join(", ", gosList.ToArray()));
+        foreach (UnityEngine.GameObject go in gos) { gosList.Add(go.name); }
+        Debug.Log("GameObjects loaded: " + string.Join(", ", gosList.ToArray()));
+
+        if (!txt)
+        {
+            Debug.Log("Did not find Assembly file.");
+        }
+
+        foreach (GameObject g in gos)
+        {
+            if (g.name.Contains("@@spawn")) { Object.Instantiate(g); }
+        }
     }
 }

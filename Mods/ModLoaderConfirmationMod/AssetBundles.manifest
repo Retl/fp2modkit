@@ -1,7 +1,7 @@
 ManifestFileVersion: 0
-CRC: 235644005
+CRC: 3034767849
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
-      Name: modloaderconfirmationmod
+      Name: modloaderconfirmation.unity3d
       Dependencies: {}

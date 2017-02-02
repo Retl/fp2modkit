@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Tooltipper : MonoBehaviour {
 
-    string strOutput;
+    string strOutput = "";
 
     void OnGUI()
     {
