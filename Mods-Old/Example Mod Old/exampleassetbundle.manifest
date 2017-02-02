@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 158300978
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 3f575a01cd68621c8f744331e87e4d4a
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 1033bf7ddfd4c6d43e7a6382c0a0a61a
+HashAppended: 0
+ClassTypes:
+- Class: 49
+  Script: {instanceID: 0}
+Assets:
+- Assets/ExampleAssetBundle/ModAssembly.dll.bytes
+Dependencies: []

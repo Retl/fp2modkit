@@ -1,0 +1,43 @@
+ManifestFileVersion: 0
+CRC: 1933051884
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: f5757f474637b46af60fa0fc762a6c16
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: a6bd4963a17efd808ec072f454a5555c
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 49
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: f66bb1f94e200b44bacb02609a2231b9, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+Assets:
+- Assets/ExampleAssetBundle/Sprites/Player_StartingPoint.png
+- Assets/ExampleAssetBundle/Sprites/BattleGlacier1/BG_SnowSlope 1.png
+- Assets/ExampleAssetBundle/Sprites/BattleGlacier1/Level_Parallax_Piece 2.png
+- Assets/ExampleAssetBundle/Sprites/BattleGlacier1/Level_Parallax_Piece 0.png
+- Assets/ExampleAssetBundle/Sprites/BattleGlacier1/BG_Rocks 1.png
+- Assets/ExampleAssetBundle/Sprites/BattleGlacier1/BG_Rocks 8.png
+- Assets/ExampleAssetBundle/Sprites/BattleGlacier1/Level_Parallax_Piece 1.png
+- Assets/ExampleAssetBundle/Sprites/BattleGlacier1/BG_Snow 1.png
+- Assets/ExampleAssetBundle/ModAssembly.dll.bytes
+- Assets/ExampleAssetBundle/Sprites/BattleGlacier1/Level_Parallax_Piece 5.png
+- Assets/ExampleAssetBundle/Sprites/BattleGlacier1/BG_DeadTree.png
+- Assets/ExampleAssetBundle/Sprites/BattleGlacier1/BG_Rocks 9.png
+- Assets/ExampleAssetBundle/Sprites/BattleGlacier1/BG_SnowDune 2.png
+- Assets/ExampleAssetBundle/ModMain.prefab
+- Assets/ExampleAssetBundle/Sprites/BattleGlacier1/BG_Snow 8.png
+- Assets/ExampleAssetBundle/Sprites/BattleGlacier1/Level_Parallax_Piece 6.png
+Dependencies: []

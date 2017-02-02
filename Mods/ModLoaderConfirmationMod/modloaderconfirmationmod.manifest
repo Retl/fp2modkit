@@ -1,0 +1,25 @@
+ManifestFileVersion: 0
+CRC: 3668028715
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 441acd407ee28c918b6d316c244e7e4f
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 2a3c21ffd17fb34886671882f24580a1
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 49
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: 9607de40de262b44195d79c535c3d1c8, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+Assets:
+- Assets/Mod Loader Confirmation Mod/Assembly-CSharp.dll.bytes
+- Assets/Mod Loader Confirmation Mod/Startup/Mod Loader Confirmation Mod.prefab
+Dependencies: []
