@@ -1,0 +1,25 @@
+ManifestFileVersion: 0
+CRC: 1696001266
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 19689b97d92925c12e394e3b48f70457
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: c67c865c09817e68359309b0a53209cf
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 49
+  Script: {instanceID: 0}
+- Class: 83
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+Assets:
+- Assets/s3-cnz-act1bgm.mp3
+- Assets/Scene-Changer/Sprites/Night_Carnival_Act_1.png
+- Assets/scenechanger.dll.bytes
+- Assets/Scene-Changer/Sprites/CarnivalNight.png
+Dependencies: []

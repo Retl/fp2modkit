@@ -1,0 +1,45 @@
+ManifestFileVersion: 0
+CRC: 2973423765
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: b0f2f27173155c6cde3d2d1c015a2cc3
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: f0b5c218b532593f618c728cc102d8d3
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 20
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 81
+  Script: {instanceID: 0}
+- Class: 82
+  Script: {instanceID: 0}
+- Class: 83
+  Script: {instanceID: 0}
+- Class: 92
+  Script: {instanceID: 0}
+- Class: 104
+  Script: {instanceID: 0}
+- Class: 124
+  Script: {instanceID: 0}
+- Class: 157
+  Script: {instanceID: 0}
+- Class: 212
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+Assets:
+- Assets/CarnivalNight.unity
+Dependencies:
+- Assets/AssetBundles/scene-changer-mod.unity3d

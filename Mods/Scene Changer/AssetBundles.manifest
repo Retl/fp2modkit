@@ -1,0 +1,11 @@
+ManifestFileVersion: 0
+CRC: 2953565404
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: scene-changer-mod.unity3d
+      Dependencies: {}
+    Info_1:
+      Name: scene-changer-mod-scene.unity3d
+      Dependencies:
+        Dependency_0: scene-changer-mod.unity3d
