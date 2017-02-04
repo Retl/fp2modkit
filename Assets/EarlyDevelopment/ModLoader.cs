@@ -66,6 +66,7 @@ public class ModLoader : MonoBehaviour
 
         // If we want to actually use these scripts in the other objects, we'll want to finish adding it to the assembly first.
         TextAsset[] tas = bun.LoadAllAssets<TextAsset>();
+        System.Type[] assemblyTypes = new System.Type[1];
         System.Collections.Generic.List<string> tasList = new System.Collections.Generic.List<string>();
         foreach (TextAsset ta in tas) { tasList.Add(ta.name); }
         Debug.Log("TextAssets loaded: " + string.Join(", ", tasList.ToArray()));
@@ -90,7 +91,11 @@ public class ModLoader : MonoBehaviour
                     {
                         //Debug.Log("Found ModAssembly. Applying to ModMain object.");
                         Debug.Log("Found ModAssembly, Loading into Current Assembly.");
-                        var assembly = System.Reflection.Assembly.Load(txt.bytes);
+                        var asm = System.Reflection.Assembly.Load(txt.bytes);
+                        assemblyTypes = asm.GetTypes();
+                        foreach (System.Reflection.Module m in asm.GetLoadedModules()) { Debug.Log("Module: " + m.ToString()); }
+                        foreach (System.Type t in asm.GetExportedTypes()) { Debug.Log("Exported Types: " + t.ToString()); }
+                        
                         //var type = assembly.GetType("ModMainBehavior");
                         //GameObject go = Instantiate(bun.LoadAsset<GameObject>("ModMain"));
                         //go.AddComponent(type);
@@ -116,7 +121,21 @@ public class ModLoader : MonoBehaviour
 
         foreach (GameObject g in gos)
         {
-            if (g.name.Contains("@@spawn")) { Object.Instantiate(g); }
+            if (g.name.Contains("_autospawn")) { Object.Instantiate(g); }
+        }
+
+        if (assemblyTypes.Length > 0)
+        {
+            GameObject g = new GameObject();
+            foreach (System.Type at in assemblyTypes)
+            {
+                Debug.Log("Checking Component: " + at.Name);
+                if (at.Name.Contains("_autoscript")) 
+                {
+                    Debug.Log("Adding Component: " + at.Name );
+                    g.AddComponent(at); 
+                }
+            }
         }
     }
 }

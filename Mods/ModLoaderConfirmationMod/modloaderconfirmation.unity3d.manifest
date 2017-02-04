@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 1524490108
+CRC: 4232945614
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 6bc3b298a2efa7f9c01a7d104db57e39
+    Hash: 3a9621ecdba8ef35c4eeeeaa12ff0822
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 2a3c21ffd17fb34886671882f24580a1
+    Hash: 093761acde0737df4e6ef8959027aaf8
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -17,9 +17,8 @@ ClassTypes:
   Script: {instanceID: 0}
 - Class: 114
   Script: {fileID: 11500000, guid: 9607de40de262b44195d79c535c3d1c8, type: 3}
-- Class: 115
-  Script: {instanceID: 0}
 Assets:
-- Assets/Mod Loader Confirmation Mod/Assembly-CSharp.dll.bytes
+- Assets/mod-loader-confirmation-mod.dll.bytes
+- Assets/ModLoaderConfirm.dll.bytes
 - Assets/Mod Loader Confirmation Mod/Startup/Mod Loader Confirmation Mod @@spawn.prefab
 Dependencies: []
